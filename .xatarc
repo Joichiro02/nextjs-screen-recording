@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Mark-Anthony-Famarin-s-workspace-6kphte.eu-central-1.xata.sh/db/snapcast",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
