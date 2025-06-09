@@ -3,12 +3,12 @@
 import { BUNNY } from "@/constants";
 import { db } from "@/drizzle/db";
 import { user, videos } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { and, eq, or, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import aj, { fixedWindow, request } from "../arcjet";
 import { auth } from "../auth";
-import { apiFetch, getEnv, withErrorHandling } from "../utils";
+import { apiFetch, doesTitleMatch, getEnv, getOrderByClause, withErrorHandling } from "../utils";
 
 const VIDEO_STREAM_BASE_URL = BUNNY.STREAM_BASE_URL;
 const THUMBNAIL_STORAGE_BASE_URL = BUNNY.STORAGE_BASE_URL;
@@ -123,3 +123,44 @@ export const saveVideoDetails = withErrorHandling(async (videoDetails: VideoDeta
 	revalidatePaths(["/"]);
 	return { videoId: videoDetails.videoId };
 });
+
+export const getAllVideos = withErrorHandling(
+	async (
+		searchQuery: string = "",
+		sortFilter?: string,
+		pageNumber: number = 1,
+		pageSize: number = 8
+	) => {
+		const currentUserId = await getSessionUserId();
+
+		const canSeeTheVideos = or(eq(videos.visibility, "public"), eq(videos.userId, currentUserId));
+
+		const whereCondition = searchQuery.trim()
+			? and(canSeeTheVideos, doesTitleMatch(videos, searchQuery))
+			: canSeeTheVideos;
+
+		const [{ totalCount }] = await db
+			.select({ totalCount: sql<number>`count(*)` })
+			.from(videos)
+			.where(whereCondition);
+
+		const totalVideos = Number(totalCount || 0);
+		const totalPages = Math.ceil(totalVideos / pageSize);
+
+		const videoRecords = await buildVideoWithUserQuery()
+			.where(whereCondition)
+			.orderBy(sortFilter ? getOrderByClause() : sql`${videos.createdAt} DESC`)
+			.limit(pageSize)
+			.offset((pageNumber - 1) * pageSize);
+
+		return {
+			videos: videoRecords,
+			pagination: {
+				currentPage: pageNumber,
+				totalPages,
+				totalVideos,
+				pageSize,
+			},
+		};
+	}
+);
