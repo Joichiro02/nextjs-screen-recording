@@ -109,7 +109,7 @@ declare interface ImageWithFallbackProps extends Omit<ImageProps, "src"> {
 	src: string | null;
 }
 
-type Visibility = string;
+type Visibility = "Public" | "Private" | string;
 
 declare interface VideoDetails {
 	videoId: string;
