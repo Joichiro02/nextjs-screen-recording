@@ -1,7 +1,7 @@
-import { ICONS } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import DropdownList from "./DropdownList";
+import RecordScreen from "./RecordScreen";
 
 export default function Header({ subHeader, title, userImg }: SharedHeaderProps) {
 	return (
@@ -23,12 +23,7 @@ export default function Header({ subHeader, title, userImg }: SharedHeaderProps)
 						<Image src="/assets/icons/upload.svg" alt="upload" width={16} height={16} />
 						<span>Upload a video</span>
 					</Link>
-					<div className="record">
-						<button className="primary-btn">
-							<Image src={ICONS.record} alt="record" width={16} height={16} />
-							<span>Record a video</span>
-						</button>
-					</div>
+					<RecordScreen />
 				</aside>
 			</section>
 

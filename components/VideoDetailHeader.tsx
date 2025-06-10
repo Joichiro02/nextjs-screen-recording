@@ -9,10 +9,10 @@ export default function VideoDetailHeader({
 	title,
 	createdAt,
 	userImg,
-	videoId,
+	// videoId,
 	ownerId,
-	visibility,
-	thumbnailUrl,
+	// visibility,
+	// thumbnailUrl,
 	username,
 	id,
 }: VideoDetailHeaderProps) {
