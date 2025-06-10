@@ -20,7 +20,7 @@ export default function VideoCard({
 				<div>
 					<figure>
 						<Image
-							src={userImg}
+							src={userImg || ""}
 							alt="avatar"
 							width={34}
 							height={34}
