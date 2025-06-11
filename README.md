@@ -1,8 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://www.youtube.com/watch?v=honnJp7-cCU" target="_blank">
-      <img src="public/readme/hero.jpg" alt="Project Banner">
-    </a>
+    <img src="public/readme/hero.jpg" alt="Project Banner">
   <br />
 
   <div>
@@ -12,10 +10,6 @@
   </div>
 
   <h3 align="center">Full Stack Screen Recording & Video Sharing Platform</h3>
-
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
 </div>
 
 ## 📋 <a name="table">Table of Contents</a>
@@ -26,14 +20,6 @@
 4. 🤸 [Quick Start](#quick-start)
 5. 🔗 [Assets](#links)
 6. 🚀 [More](#more)
-
-## 🚨 Tutorial
-
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
-
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
-
-<a href="https://www.youtube.com/watch?v=honnJp7-cCU" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -171,15 +157,4 @@ Assets and snippets used in the project can be found in the **[video kit](https:
 
 <a href="https://jsm.dev/snapcast-kit" target="_blank">
   <img src="public/readme/videokit.jpg" alt="Video Kit Banner">
-</a>
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsm.dev/snapcast-jsmpro" target="_blank">
-  <img src="public/readme/jsmpro.jpg" alt="Project Banner">
 </a>
