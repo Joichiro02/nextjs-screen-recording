@@ -11,14 +11,13 @@ export async function middleware(request: NextRequest) {
 	if (!session) {
 		return NextResponse.redirect(new URL("/sign-in", request.url));
 	}
-
 	return NextResponse.next();
 }
 
 // to test the boot
 // comment out the middleware above
-// input in terminal the command: curl -v http://localhost:3000
-// the return will be -> {"code":403,"message":"Forbidden"}%
+// input in terminal: curl -v http://localhost:3000
+// return will be -> {"code":403,"message":"Forbidden"}%
 const validate = aj
 	.withRule(
 		shield({
@@ -33,9 +32,6 @@ const validate = aj
 	);
 
 export default createMiddleware(validate);
-
 export const config = {
 	matcher: ["/((?!api|_next/static|_next/image|favicon.ico|sign-in|assets).*)"],
 };
-
-// ⨯ [TypeError: Body is unusable: Body has already been read]
