@@ -13,11 +13,6 @@ export async function middleware(request: NextRequest) {
 	}
 	return NextResponse.next();
 }
-
-// to test the boot
-// comment out the middleware above
-// input in terminal: curl -v http://localhost:3000
-// return will be -> {"code":403,"message":"Forbidden"}%
 const validate = aj
 	.withRule(
 		shield({
@@ -27,7 +22,7 @@ const validate = aj
 	.withRule(
 		detectBot({
 			mode: "LIVE",
-			allow: ["CATEGORY:SEARCH_ENGINE", "G00G1E_CRAWLER"], // allow other bots if you want to.
+			allow: ["CATEGORY:SEARCH_ENGINE", "G00G1E_CRAWLER"],
 		})
 	);
 
